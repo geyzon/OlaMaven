@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="pt-br">
+<title>Cadastro de Títulos</title>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/css/styles.css">
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<section id="navbar" class="navbar-expand-lg">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="#"><img width="32"
+				src="https://s3.amazonaws.com/redenaturaprod/imagens/cnd/profile/profile_354832147_1547723762612.jpg"></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+				<div class="navbar-nav">
+					<a class="nav-item nav-link active" href="#">Cadastro</a> <a
+						class="nav-item nav-link" href="#">Edição</a> <a
+						class="nav-item nav-link" href="#">Exclusão</a> <a
+						class="nav-item nav-link disabled" href="#" tabindex="-1"
+						aria-disabled="true">Desabilitado</a>
+				</div>
+			</div>
+		</nav>
+	</section>
+	<section class="container mt-3">
+		<div class="card">
+			<div class="card-header">
+				<h5 class="float-left mt-1">
+					<strong>Dados do Título</strong>
+				</h5>
+				<a class="float-right mt-1" href="#">Voltar à Pesquisa</a>
+			</div>
+			<div class="card-body">
+				<form class="form-horizontal" method="POST" action="/titulos/novo"
+					target="_self">
+					<div class="alert alert-success alert-dismissible" role="alert" th:if="${!#strings.isEmpty(mensagem)}">
+						<button type="button" class="close" data-dismiss="alert">x</button>
+						<span th:text=${mensagem}></span>
+					</div>
+					<div class="form-group row">
+						<label class="col-md-3 col-form-label text-right" for="descricao"><strong>Descrição:</strong></label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" id="descricao"
+								name="descricao">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-md-3 col-form-label text-right" for="vencimento"><strong>Data
+								de Vencimento:</strong></label>
+						<div class="col-md-4">
+							<input type="date" class="form-control" placeholder="99/99/9999"
+								id="vencimento" name="vencimento">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-md-3 col-form-label text-right" for="valor"><strong>Valor:</strong></label>
+						<div class="col-md-4">
+							<input type="number" class="form-control" id="valor" name="valor"
+								placeholder="9,99" step="0.01">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-md-3 col-form-label text-right" for="status"><strong>Status:</strong></label>
+						<div class="col-md-4">
+							<select class="form-control" id="status" name="status">
+								<option value="PENDENTE">Pendente</option>
+								<option value="APROVADO">Aprovado</option>
+								<option value="NEGADO">Negado</option>
+							</select>
+						</div>
+					</div>
+					<div class="px-2 offset-md-3">
+						<button class="btn btn-success" type="submit">Salvar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
